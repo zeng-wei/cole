@@ -1,5 +1,5 @@
 # https://www.cdzfgjj.gov.cn:9802/cdnt/login.jsp#per
-import execjs
+import execjs  # 依赖 nodejs
 import requests
 import random
 import re
