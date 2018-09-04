@@ -4,7 +4,7 @@ import logging.config
 __version__ = '0.0.1'
 
 logging.config.fileConfig('logging_conf.ini', defaults={'logfilename': 'mylog.log'})
-logger = logging.getLogger('custom')
+logger = logging.getLogger()
 
 logger.info('test')
 
