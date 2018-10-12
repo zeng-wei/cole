@@ -3,7 +3,7 @@ import aiohttp
 import time
 
 
-plan_time = 5
+plan_time = 10
 begin_time = time.time()
 coroutine_num = 1000
 
@@ -15,7 +15,7 @@ async def start_task():
         while True:
             if time.time() - begin_time < plan_time:
                 content = await request(session)
-                response_bytes += len(content.encode('utf-8'))
+                response_bytes += len(content)
                 request_num += 1
             else:
                 return response_bytes, request_num
@@ -24,7 +24,7 @@ async def start_task():
 async def request(session):
     url = 'https://www.baidu.com/'
     async with session.get(url) as response:
-        content = await response.text()
+        content = await response.read()
         return content
 
 loop = asyncio.get_event_loop()
