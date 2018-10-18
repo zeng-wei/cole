@@ -20,7 +20,8 @@ async def start_task():
             else:
                 return response_bytes, request_num
 
-
+# import requests
+# requests.get("", enco)
 async def request(session):
     url = 'https://www.baidu.com/'
     async with session.get(url) as response:
