@@ -4,9 +4,9 @@ import re
 import collections
 
 
-base_path = './file_demo/'
+base_path = './source/'
 
-print('operate start')
+print('------------ operate start ! ------------')
 table = xlrd.open_workbook(base_path+'test.xlsx').sheets()[1]
 data = collections.OrderedDict()
 for phone in table.col_values(0):
@@ -42,9 +42,9 @@ add_data_from_log_file('api_client.log')
 add_data_from_log_file('api_client1.log')
 add_data_from_log_file('api_client2.log')
 
-with open('new.log', 'w') as f:
+with open(base_path+'new.log', 'w') as f:
     for content_list in data.values():
         for content in content_list:
             f.write(str(content)+'\n')
 
-print('operate finish! to ---> new.log')
+print('operate finish! save to ---> ./source/new.log')
