@@ -11,3 +11,4 @@ pillow==5.3.0
 pytesseract==0.2.6
 pycryptodome==3.7.2
 xlrd==1.2.0
+websockets==7.0
