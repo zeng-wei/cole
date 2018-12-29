@@ -16,13 +16,18 @@ def http_request():
         return {"error": e}
 
 
-threads = []
-t = time.time()
-for x in range(100):
-    thread = Thread(target=http_request)
-    threads.append(thread)
-    thread.start()
+def run():
+    threads = []
+    t = time.time()
+    for x in range(100):
+        thread = Thread(target=http_request)
+        threads.append(thread)
+        thread.start()
 
-for i in threads:
-    i.join()
-print("Thread Http Request", time.time() - t)
+    for i in threads:
+        i.join()
+    print("Thread Http Request", time.time() - t)
+
+
+if __name__ == '__main__':
+    run()

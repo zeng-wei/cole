@@ -1,17 +1,20 @@
+# 需求：从api_client.log、api_client1.log、api_client2.log读取日志，按test.xlsx文件的号码顺序生成新的log文件
 import xlrd
 import re
 import collections
 
 
+base_path = './file_demo/'
+
 print('operate start')
-table = xlrd.open_workbook('./test_file.xlsx').sheets()[1]
+table = xlrd.open_workbook(base_path+'test.xlsx').sheets()[1]
 data = collections.OrderedDict()
 for phone in table.col_values(0):
     data[phone] = []
 
 
 def add_data_from_log_file(file_name):
-    with open(file_name) as f:
+    with open(base_path+file_name) as f:
         while True:
             content = f.readline()
             if not content:
@@ -36,8 +39,8 @@ def add_data_from_log_file(file_name):
 
 
 add_data_from_log_file('api_client.log')
-add_data_from_log_file('test1.log')
 add_data_from_log_file('api_client1.log')
+add_data_from_log_file('api_client2.log')
 
 with open('new.log', 'w') as f:
     for content_list in data.values():
